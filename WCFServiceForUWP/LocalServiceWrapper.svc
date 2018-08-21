@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="WCFServiceForUWP.Service1" CodeBehind="LocalServiceWrapper.svc.cs" %>
