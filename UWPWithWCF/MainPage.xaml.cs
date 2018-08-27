@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.ServiceModel;
 using UWPWithWCF.LocalServiceWrapper;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -23,16 +24,18 @@ namespace UWPWithWCF
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        //private LocalServiceClient client = new LocalServiceClient();
+        private string serviceName = "bthserv";
+        private LocalServiceClient client = new LocalServiceClient();
 
         public MainPage()
         {
             this.InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            var status = await client.StartServiceAsync(serviceName);
+            textBlockBluetoothStatus.Text = status.ToString();
         }
     }
 }
