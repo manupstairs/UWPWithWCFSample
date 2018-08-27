@@ -9,8 +9,8 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel>
-        <TextBlock x:Name="textBlockBluetoothStatus"></TextBlock>
-        <Button HorizontalAlignment="Center" Height="100" Click="Button_Click">Start bluetooth service</Button>
+        <TextBlock x:Name="textBlockStatus"></TextBlock>
+        <Button HorizontalAlignment="Center" Height="100" Click="Button_Click">Start Windows service</Button>
         
     </StackPanel>
 </Page>

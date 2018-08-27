@@ -24,7 +24,7 @@ namespace UWPWithWCF
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private string serviceName = "bthserv";
+        private string serviceName = "aspnet_state";
         private LocalServiceClient client = new LocalServiceClient();
 
         public MainPage()
@@ -35,7 +35,7 @@ namespace UWPWithWCF
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             var status = await client.StartServiceAsync(serviceName);
-            textBlockBluetoothStatus.Text = status.ToString();
+            textBlockStatus.Text = status.ToString();
         }
     }
 }

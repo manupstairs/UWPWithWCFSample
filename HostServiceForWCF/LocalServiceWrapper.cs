@@ -14,8 +14,10 @@ namespace HostServiceForWCF
             ServiceController controller = new ServiceController(name);
 
             if (controller.Status == ServiceControllerStatus.Stopped)
+            { 
                 controller.Start();
-
+                controller.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromSeconds(5));
+            }
             return controller.Status;
         }
     }
