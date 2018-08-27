@@ -22,8 +22,18 @@ namespace HostServiceForWCF
             process.Account = ServiceAccount.LocalSystem;
             service = new ServiceInstaller();
             service.ServiceName = "WCFHostWindowsService";
+            service.StartType = ServiceStartMode.Automatic;
             Installers.Add(process);
             Installers.Add(service);
+            this.AfterInstall += ProjectInstaller_AfterInstall;
+        }
+
+        private void ProjectInstaller_AfterInstall(object sender, InstallEventArgs e)
+        {
+            using (ServiceController sc = new ServiceController("WCFHostWindowsService"))
+            { 
+                sc.Start();
+            }
         }
     }
 }
